@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "537936529423",
+    "project_id": "service-app-94705",
+    "storage_bucket": "service-app-94705.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537936529423:android:8667816a99c89c1db5fb7a",
+        "android_client_info": {
+          "package_name": "com.khandelwal.distributors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "537936529423-5nleijv4l880b68ou9i05ke7g64c1da2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUW5wtkNwtyFHUqXDaR99UX56BaANoZ5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "537936529423-5nleijv4l880b68ou9i05ke7g64c1da2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
