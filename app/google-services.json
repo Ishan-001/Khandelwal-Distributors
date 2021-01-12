@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "537936529423",
+    "firebase_url": "https://service-app-94705-default-rtdb.firebaseio.com",
     "project_id": "service-app-94705",
     "storage_bucket": "service-app-94705.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "537936529423-u39q03vdahass5mm8qltjui12c5l72g1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.khandelwal.distributors",
+            "certificate_hash": "109b26790f428109059d62b7c190e9c224370d0f"
+          }
+        },
         {
           "client_id": "537936529423-5nleijv4l880b68ou9i05ke7g64c1da2.apps.googleusercontent.com",
           "client_type": 3
