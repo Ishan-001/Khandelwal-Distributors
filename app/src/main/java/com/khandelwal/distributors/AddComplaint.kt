@@ -1,31 +1,43 @@
 package com.khandelwal.distributors
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.navigation.fragment.findNavController
+import android.widget.EditText
+import android.widget.TextView
+import com.google.firebase.database.FirebaseDatabase
+import fr.tvbarthel.lib.blurdialogfragment.SupportBlurDialogFragment
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
-class AddComplaint : Fragment() {
+class AddComplaint() : SupportBlurDialogFragment() {
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false)
-    }
+        val root=inflater.inflate(R.layout.add_complaint_layout, container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        root.findViewById<TextView>(R.id.save).setOnClickListener {
+            val request=Request(
+                root.findViewById<EditText>(R.id.title).text.toString(),
+                root.findViewById<EditText>(R.id.date).text.toString(),
+                root.findViewById<EditText>(R.id.description).text.toString(),
+                root.findViewById<EditText>(R.id.type).text.toString(),
+                root.findViewById<EditText>(R.id.name).text.toString(),
+                root.findViewById<EditText>(R.id.bill).text.toString(),
+                false,
+                0,
+                "none"
+            )
 
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            val db= FirebaseDatabase.getInstance()
+            val ref = db.getReference("requests").child("all")
+
+            ref.push().setValue(request).addOnCompleteListener {
+                dismiss()
+            }
         }
+
+        return root
     }
 }

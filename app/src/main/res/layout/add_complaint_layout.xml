@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/gradient"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:paddingHorizontal="20dp"
+    android:orientation="vertical"
+    tools:context=".AddComplaint">
+
+    <TextView
+        android:layout_width="355dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="16dp"
+        android:text="Add a request"
+        android:textColor="@android:color/black"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/button_back3"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:text="Name"/>
+
+            <EditText
+                style="@style/InputTextStyle"
+                android:id="@+id/name"
+                android:background="@drawable/input_back" />
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:text="Title"/>
+
+            <EditText
+                style="@style/InputTextStyle"
+                android:id="@+id/title"
+                android:background="@drawable/input_back" />
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:text="Type"/>
+
+            <EditText
+                style="@style/InputTextStyle"
+                android:id="@+id/type"
+                android:background="@drawable/input_back" />
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:text="Bill No."/>
+
+            <EditText
+                style="@style/InputTextStyle"
+                android:id="@+id/bill"
+                android:background="@drawable/input_back" />
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:text="Date"/>
+
+            <EditText
+                style="@style/InputTextStyle"
+                android:id="@+id/date"
+                android:inputType="text"
+                android:background="@drawable/input_back" />
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:text="Description"/>
+
+            <EditText
+                style="@style/InputTextStyle"
+                android:id="@+id/description"
+                android:background="@drawable/input_back"
+                android:layout_height="100dp"/>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="Save"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:paddingVertical="8dp"
+                android:textColor="@android:color/white"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="25dp"
+                android:id="@+id/save"
+                android:background="@drawable/button_back"
+                android:textAllCaps="false"/>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/progress_bar"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

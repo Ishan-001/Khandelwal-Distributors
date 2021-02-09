@@ -4,7 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.HandlerCompat.postDelayed
 import com.balysv.materialripple.MaterialRippleLayout
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
@@ -24,6 +27,7 @@ class SplashActivity : AppCompatActivity() {
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private val RC_SIGN_IN = 1
     private lateinit var mAuth: FirebaseAuth
+    private var account: GoogleSignInAccount? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +38,17 @@ class SplashActivity : AppCompatActivity() {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
         mAuth = FirebaseAuth.getInstance()
 
-        val account = GoogleSignIn.getLastSignedInAccount(this)
+        account = GoogleSignIn.getLastSignedInAccount(this)
 
         if (account==null && mAuth.currentUser==null)
             animateSplash()
+        else{
+            Handler(Looper.getMainLooper()).postDelayed({
+                startActivity(Intent(baseContext, MainActivity::class.java))
+            },2000)
+        }
 
-        MaterialRippleLayout.on(findViewById(R.id.google_sign_in_btn))
+        MaterialRippleLayout.on(findViewById(R.id.sign_in_btn))
                 .rippleColor(R.color.rippleColor)
                 .create()
                 .setOnClickListener { googleSignIn() }
@@ -48,22 +57,13 @@ class SplashActivity : AppCompatActivity() {
     private fun animateSplash() {
         Handler(Looper.getMainLooper()).postDelayed({
 
+            findViewById<ImageButton>(R.id.sign_in_btn).visibility = View.VISIBLE
             YoYo.with(Techniques.BounceIn)
                     .duration(700)
                     .repeat(0)
-                    .playOn(findViewById(R.id.google_sign_in_btn));
+                    .playOn(findViewById(R.id.sign_in_btn));
 
-            YoYo.with(Techniques.SlideInLeft)
-                    .duration(700)
-                    .repeat(0)
-                    .playOn(findViewById(R.id.message1));
-
-            YoYo.with(Techniques.SlideInRight)
-                    .duration(700)
-                    .repeat(0)
-                    .playOn(findViewById(R.id.message2));
-
-        }, 500)
+        }, 2000)
     }
 
     private fun googleSignIn() {
@@ -89,6 +89,7 @@ class SplashActivity : AppCompatActivity() {
                         val user = mAuth.currentUser
                         Snackbar.make(findViewById(R.id.splash_screen), "Authentication Success.",
                                 Snackbar.LENGTH_SHORT).show()
+                        startActivity(Intent(baseContext, MainActivity::class.java))
                     } else {
                         Snackbar.make(findViewById(R.id.splash_screen), "Authentication Failed.",
                                 Snackbar.LENGTH_SHORT).show()
